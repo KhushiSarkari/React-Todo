@@ -27,7 +27,7 @@ class App extends Component {
     return (
       <div className="todo-app container">
         <h1 className="center grey-text">Todo's</h1>
-        <Todos todos={this.state.todos} deleteTodo={this.deleteTodo} />
+        <Todos />
         <AddTodo addTodo={this.addTodo} />
       </div>
     );

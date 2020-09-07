@@ -1,13 +1,15 @@
-import React from 'react'
+import React from 'react';
+import {connect} from 'react-redux';
 
-const Todos = ({ todos, deleteTodo }) => {
+const Todos = ({todos}) => {
+
     return (todos.length ?
         (
             <div className="todos collection">
                 {todos.map(todo => {
                     return (
                         <div className="collection-item" key={todo.id}>
-                            <span onClick={() => { deleteTodo(todo.id) }}>{todo.content}</span>
+                            <span >{todo.content}</span>
                         </div>
                     )
                 })}
@@ -20,4 +22,11 @@ const Todos = ({ todos, deleteTodo }) => {
     );
 
 }
-export default Todos;
+
+const mapStateToProps=(state)=>{
+    return {
+        todos: state.todos
+      }
+}
+
+export default connect(mapStateToProps)(Todos);
