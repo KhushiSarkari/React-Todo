@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-const Todos = ({todos}) => {
+const Todos = ({todos,deleteTodo}) => {
 
     return (todos.length ?
         (
@@ -9,7 +9,7 @@ const Todos = ({todos}) => {
                 {todos.map(todo => {
                     return (
                         <div className="collection-item" key={todo.id}>
-                            <span >{todo.content}</span>
+                            <span onClick={() => {deleteTodo(todo.id)} } >{todo.content}</span>
                         </div>
                     )
                 })}
@@ -29,4 +29,10 @@ const mapStateToProps=(state)=>{
       }
 }
 
-export default connect(mapStateToProps)(Todos);
+const mapDispatchToProps=(dispatch)=>{
+    return {
+        deleteTodo : (id) => dispatch({ type : 'DELETE_TODO', id })
+      }
+}
+
+export default connect( mapStateToProps, mapDispatchToProps )(Todos);

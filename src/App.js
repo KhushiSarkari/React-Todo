@@ -9,12 +9,7 @@ class App extends Component {
       { id: 2, content: "Rewatch- The Force Awakens" }
     ]
   };
-  deleteTodo = (id) => {
-    const todos = this.state.todos.filter(todo => todo.id !== id);
-    this.setState({
-      todos
-    });
-  }
+
   addTodo = (todo) => {
     const [lastItem] = this.state.todos.slice(-1);
     todo.id = lastItem ? lastItem.id + 1 : 1;

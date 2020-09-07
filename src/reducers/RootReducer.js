@@ -6,6 +6,13 @@ let initState = {
 }
 
 const RootReducer = (state = initState, action) => {
+    if (action.type === 'DELETE_TODO') {
+        const todos = state.todos.filter(todo => todo.id !== action.id);
+        return {
+            ...state,
+            todos
+        };
+    }
     return state;
 }
 
