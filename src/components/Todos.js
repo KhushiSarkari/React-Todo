@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import { deleteTodoAction } from "../actions/TodoActions";
 
 const Todos = ({todos,deleteTodo}) => {
 
@@ -31,7 +32,7 @@ const mapStateToProps=(state)=>{
 
 const mapDispatchToProps=(dispatch)=>{
     return {
-        deleteTodo : (id) => dispatch({ type : 'DELETE_TODO', id })
+        deleteTodo : (id) => dispatch(deleteTodoAction(id))
       }
 }
 
