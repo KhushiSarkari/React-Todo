@@ -13,7 +13,17 @@ const RootReducer = (state = initState, action) => {
             todos
         };
     }
+    else if (action.type === 'ADD_TODO') {
+        const [lastItem] = state.todos.slice(-1);
+        action.todo.id = lastItem ? lastItem.id + 1 : 1;
+        const todos = [...state.todos, action.todo];
+        return {
+            ...state,
+            todos
+        };
+    }
     return state;
 }
+
 
 export default RootReducer;

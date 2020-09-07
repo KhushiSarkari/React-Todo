@@ -1,4 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { addTodoAction } from "../actions/TodoActions";
 
 class AddTodo extends Component {
     state = {
@@ -28,4 +30,17 @@ class AddTodo extends Component {
         );
     }
 }
-export default AddTodo;
+
+const mapStateToProps = (state) => {
+    return {
+        todos: state.todos
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addTodo: (todo) => dispatch(addTodoAction(todo))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddTodo);
